@@ -6,6 +6,7 @@ import Register from './Register';
 import FileUpload from './FileUpload';
 import FileList from './FileList';
 import ChangePassword from './ChangePassword';
+import { API_URL } from './config';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,7 +26,7 @@ function App() {
     const token = localStorage.getItem('token');
     if (!token) return;
 
-    const response = await fetch('https://api.ashtonashton.net/usage', {
+    const response = await fetch(`${API_URL}/usage`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_URL } from './config';
 
 function FileList({ refreshTrigger }) {
   const [files, setFiles] = useState([]);
@@ -22,7 +23,7 @@ function FileList({ refreshTrigger }) {
     try {
       const token = localStorage.getItem('token');
       
-      const response = await fetch('https://api.ashtonashton.net/files', {
+      const response = await fetch(`${API_URL}/files`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -52,7 +53,7 @@ function FileList({ refreshTrigger }) {
     try {
       const token = localStorage.getItem('token');
       
-      const response = await fetch(`https://api.ashtonashton.net/download/${fileId}`, {
+      const response = await fetch(`${API_URL}/download/${fileId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -85,7 +86,7 @@ function FileList({ refreshTrigger }) {
     try {
       const token = localStorage.getItem('token');
       
-      const response = await fetch(`https://api.ashtonashton.net/files/${fileId}`, {
+      const response = await fetch(`${API_URL}/files/${fileId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { API_URL } from './config';
 
 function FileUpload({ onUploadSuccess }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -28,7 +29,7 @@ function FileUpload({ onUploadSuccess }) {
       formData.append('file', selectedFile);
       const token = localStorage.getItem('token');
 
-      const response = await fetch('https://api.ashtonashton.net/upload', {
+      const response = await fetch(`${API_URL}/upload`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
